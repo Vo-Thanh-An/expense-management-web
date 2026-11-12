@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@keyframes pageReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.99);
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes modalZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(16px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+  }
+
+  100% {
+    transform: translateX(250%) rotate(25deg);
+  }
+}
+
+.animate-page {
+  animation: pageReveal 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-modal {
+  animation: modalZoom 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Hiệu ứng thẻ kính tối màu viền sáng */
+.cyber-card {
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cyber-card:hover {
+  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Hiệu ứng quét sáng trên thẻ Virtual Card */
+.card-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.14) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  animation: shimmer 5s infinite;
+  pointer-events: none;
+}
+
+/* Nút bấm phát sáng & đàn hồi */
+.btn-cyber {
+  transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-cyber:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.btn-cyber:active {
+  transform: scale(0.95);
+}
+
+/* Tùy chỉnh thanh cuộn tối màu */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
