@@ -1,16 +1,27 @@
-# React + Vite
+# 💸 FINTECH VAULT — Personal Expense Management Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern personal finance and expense tracking web application built with **React + Vite** and **Tailwind CSS**. It enables users to monitor income and expenses, analyze month-over-month spending trends, manage category budgets, and track savings vaults.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** [https://expense-management-web-eight.vercel.app/](https://expense-management-web-eight.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **User Authentication:** Clean login interface with persistent session management.
+- **Command Center (Dashboard):** Displays an interactive virtual asset card, total income/expenses, savings rate, and top spending highlights.
+- **Transaction Ledger:** Add, delete, search, and filter financial records by transaction type (Income/Expense) and category.
+- **Monthly Analytics & Comparison:** Visualizes category-level expense breakdowns and automatically calculates month-over-month growth percentages.
+- **Budgets & Savings Vaults:** Tracks monthly spending limits per category with over-budget alerts, and allows instant deposits into targeted savings goals.
+- **Persistent Storage & Backup:** Automatically syncs data via browser `localStorage`, with one-click `.json` export and demo data reset.
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 🛠️ Tech Stack
+
+- **Frontend:** React (JavaScript), Vite
+- **Styling:** Tailwind CSS v4, Custom CSS Micro-interactions
+- **Icons:** Lucide React
+- **Deployment:** GitHub + Vercel (Continuous Deployment)
+
+---
