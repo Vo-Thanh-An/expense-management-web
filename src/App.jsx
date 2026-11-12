@@ -133,9 +133,35 @@ export default function App() {
     showToast('Đã xóa giao dịch khỏi danh sách', 'delete');
   };
 
-  const handleDepositGoal = (goalId, addAmount) => {
-    setGoals(prev => prev.map(g => g.id === goalId ? { ...g, current: Math.min(g.target, g.current + addAmount) } : g));
-    showToast(`Đã nạp thêm ${formatVND(addAmount)} vào quỹ mục tiêu!`);
+const handleDepositGoal = (goalId, addAmount) => {
+    const targetGoal = goals.find(g => g.id === goalId);
+    if (!targetGoal) return;
+
+    // 1. Kiểm tra xem số dư khả dụng có đủ để trích vào quỹ không
+    if (overallSummary.balance < addAmount) {
+      showToast('Số dư khả dụng không đủ để nạp vào quỹ!', 'delete');
+      return;
+    }
+
+    // 2. Cộng tiền vào Quỹ mục tiêu
+    setGoals(prev =>
+      prev.map(g =>
+        g.id === goalId ? { ...g, current: Math.min(g.target, g.current + addAmount) } : g
+      )
+    );
+
+    // 3. Tự động tạo một khoản trích quỹ trong Sổ giao dịch để trừ vào Số dư khả dụng
+    const newVaultTx = {
+      id: Date.now().toString(),
+      amount: addAmount,
+      type: 'EXPENSE',
+      category: 'Học tập', // Hoặc bạn có thể thêm danh mục 'Trích quỹ' riêng
+      date: new Date().toISOString().split('T')[0],
+      note: `Nạp vào quỹ: ${targetGoal.name}`
+    };
+    setTransactions(prev => [newVaultTx, ...prev]);
+
+    showToast(`Đã trích ${formatVND(addAmount)} vào "${targetGoal.name}"!`);
   };
 
   const overallSummary = useMemo(() => {
