@@ -1,0 +1,22 @@
+# Render Blueprint — tạo backend FINTECH VAULT trên Render (gói Free).
+# Dashboard Render → New → Blueprint → chọn repo này. Xem DEPLOY.md để biết từng bước.
+services:
+  - type: web
+    name: fintech-vault-api
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      # Điền khi tạo Blueprint (lấy từ Turso)
+      - key: TURSO_DATABASE_URL
+        sync: false
+      - key: TURSO_AUTH_TOKEN
+        sync: false
+      # Địa chỉ trang Vercel, vd: https://expense-management-web-eight.vercel.app
+      - key: CORS_ORIGIN
+        sync: false
